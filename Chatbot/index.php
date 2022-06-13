@@ -6,7 +6,7 @@ $json = json_decode(file_get_contents("assets/uploads/groups.json"));
 $groups = "";
 
 for ($i = 0; $i < count($json); $i++) {
-    $groups .= "<div class='group''>";
+    $groups .= "<div class='group' onclick='Gopen( " . $json[$i]->GID . ")'>";
     $groups .= "<header>" . $json[$i]->name . "</header>";
     $groups .= "<div>" . count($json[$i]->persons) . "/" . $json[$i]->maxAmount . "</div>";
     $groups .= "</div>";
