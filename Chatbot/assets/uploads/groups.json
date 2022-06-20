@@ -1,13 +1,13 @@
 [
     {
         "GID": 0,
-        "name": "SD1A",
+        "groupName": "SD1A",
         "maxAmount": 20,
         "persons": [
             {
                 "Fname":"brian",
                 "Lname":"post",
-                "Dname":"rdr3000",
+                "Uname":"rdr3000",
                 "email":null,
                 "Snumber":97081876,
                 "role":"admin"
@@ -15,7 +15,7 @@
             {
                 "Fname":"john",
                 "Lname":"tapp",
-                "Dname":"johnTapp23",
+                "Uname":"johnTapp23",
                 "email":null,
                 "Snumber":97092582,
                 "role":"participant"
@@ -23,25 +23,29 @@
             {
                 "Fname":"xandor",
                 "Lname":"sportel",
-                "Dname":"frits",
+                "Uname":"frits",
                 "email":"xsporteldaily@gmail.com",
                 "Snumber":97097492,
                 "role":"participant"
             }
         ],
-        "display_names_allowed": true,
-        "email_only": false,
-        "student_only": true
+        "settings": {
+           "theme_color": "green",
+            "display_names_allowed": true,
+            "email_only": false,
+            "student_only": true 
+        }
+        
     },
     {
         "GID": 1,
-        "name": "SD1B",
+        "groupName": "SD1a",
         "maxAmount": 8,
         "persons": [
             {
                 "Fname":"brian",
                 "Lname":"post",
-                "Dname":"rdr3000",
+                "Uname":"rdr3000",
                 "email":null,
                 "Snumber":97081876,
                 "role":"admin"
@@ -49,7 +53,7 @@
             {
                 "Fname":"john",
                 "Lname":"tapp",
-                "Dname":"johnTapp23",
+                "Uname":"johnTapp23",
                 "email":null,
                 "Snumber":97092582,
                 "role":"participant"
@@ -57,14 +61,18 @@
             {
                 "Fname":"xandor",
                 "Lname":"sportel",
-                "Dname":"frits",
+                "Uname":"frits",
                 "email":"xsporteldaily@gmail.com",
                 "Snumber":97097492,
                 "role":"participant"
             }
         ],
-        "display_names_allowed": true,
-        "email_only": false,
-        "student_only": true
+        "settings": {
+            "theme_color": "#ff0000",
+            "display_names_allowed": true,
+            "email_only": false,
+            "student_only": true
+        }
+        
     }
 ]

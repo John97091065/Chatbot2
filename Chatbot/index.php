@@ -6,8 +6,8 @@ $json = json_decode(file_get_contents("assets/uploads/groups.json"));
 $groups = "";
 
 for ($i = 0; $i < count($json); $i++) {
-    $groups .= "<div class='group' onclick='Gopen( " . $json[$i]->GID . ")' style='background:" . $json[$i]->theme_color . "'>";
-    $groups .= "<header><h2>" . $json[$i]->name . "</h2></header>";
+    $groups .= "<div class='group' onclick='Gopen( " . $json[$i]->GID . ")' style='background: radial-gradient(white 1% ," . $json[$i]->settings->theme_color . "'>";
+    $groups .= "<header><h2>" . $json[$i]->groupName . "</h2></header>";
     $groups .= "<div><h4>" . count($json[$i]->persons) . "/" . $json[$i]->maxAmount . "</h4></div>";
     $groups .= "</div>";
 }
