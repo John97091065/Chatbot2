@@ -1,22 +1,8 @@
 <?php
 
-class group {
-    protected string $GID;
-    private string $groupName;
-    private int $maxAmount;
-    private array $persons;
-    private array $settings;
-
-
-    function __construct() {
-        
+class groups {
+    function getGroupList() {
+        $json = json_decode(file_get_contents("assets/uploads/groups.json"));
+        return $json;
     }
-
-    function changeGID(int $old, int $new) {
-        
-    }
-}
-
-class command {
-    
 }

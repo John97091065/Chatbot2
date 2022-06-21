@@ -1,0 +1,3 @@
+RewriteEngine On
+
+ErrorDocument 641 /assets/errors/error.html
