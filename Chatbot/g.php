@@ -2,10 +2,11 @@
 require_once "assets/database/sql/db.php";
 require_once "assets/classes/classes.php";
 
-$groups = new groups();
-$groups = $groups->getGroupList();
+$grouplist = new groups();
+$grouplist = $grouplist->getGroupList();
 
-$group = $groups[1];
+$group = $grouplist[$_GET["g"]];
+
 
 ?>
 
@@ -17,7 +18,9 @@ $group = $groups[1];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style/group.css">
     <link rel="stylesheet" href="assets/style/general.css">
-    <title><?= strval($groups[0]->groupName) ?></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="assets/js/groups.js"></script>
+    <title><?= strval($group->groupName) ?></title>
 </head>
 <body>
     <div class="container">

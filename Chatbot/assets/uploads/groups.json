@@ -30,17 +30,17 @@
             }
         ],
         "settings": {
-           "theme_color": "green",
+            "theme_color": "green",
             "display_names_allowed": true,
-            "email_only": false,
+            "access_without_email": false,
             "student_only": true,
             "is_public": false
-        }
-        
+        }  
     },
+
     {
         "GID": 1,
-        "groupName": "SD1a",
+        "groupName": "SD1B",
         "maxAmount": 8,
         "persons": [
             {
@@ -79,10 +79,9 @@
         "settings": {
             "theme_color": "#ff0000",
             "display_names_allowed": true,
-            "email_only": false,
+            "access_without_email": true,
             "student_only": true,
             "is_public": true
         }
-        
     }
 ]

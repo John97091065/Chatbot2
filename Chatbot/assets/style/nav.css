@@ -1,0 +1,43 @@
+header {
+    height: auto;
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .home, .home a {
+    font-size: 18px;
+    background-color: #97d0ff;
+    color: white;
+    text-decoration: none;
+    padding: 14px 16px;
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+    height: 100%;
+}
+
+header nav ul li {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    color: #f2f2f2;
+}
+
+header nav ul li:hover {
+    background: #ddd;
+    color: black;
+}
+
+header nav ul li a {
+    color: inherit;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+}

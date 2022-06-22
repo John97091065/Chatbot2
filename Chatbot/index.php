@@ -8,10 +8,13 @@ $groups = "";
 
 for ($i = 0; $i < count($json); $i++) {
     $groups .= "<div class='group' onclick='Gopen( " . $json[$i]->GID . ")' style='background: radial-gradient(white 1% ," . $json[$i]->settings->theme_color . "'>";
-    $groups .= "<header><h2>" . $json[$i]->groupName . "</h2></header>";
+    $groups .= "<h2>" . $json[$i]->groupName . "</h2>";
     $groups .= "<div><h4>" . count($json[$i]->persons) . "/" . $json[$i]->maxAmount . "</h4></div>";
     $groups .= "</div>";
 }
+
+$persons = new persons();
+var_dump($persons->getPersonById(0));
 
 ?>
 
@@ -22,17 +25,14 @@ for ($i = 0; $i < count($json); $i++) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style/home.css">
+    <link rel="stylesheet" href="assets/style/nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/style/general.css">
+    <script src="assets/js/groups.js"></script>
     <title>digiDave</title>
 </head>
 <body>
-    <div class="topnav">
-  <a class="active" href="#home"><h3>(digidave)</h3></a>
-  <a href="login.php">login</a>
-  <a href="#">Contact</a>
-  <a href="#">About</a>
-  <a href="#">News</a>
-</div>
+    <?php include "assets/includes/header.php" ?>
     <div class="container">
         <?= $groups ?>
     </div>
