@@ -1,13 +1,9 @@
 <?php
 
 session_start();
-session_unset();
+require('db.php');
 
 ?>
-
-
-
-
 
 
 
@@ -24,11 +20,7 @@ session_unset();
             <div class="shape"></div>
         </div>
     
-        <?php
-
-            $host = ""
-
-        ?>
+        
 
         <form>
             <h3>Login</h3>

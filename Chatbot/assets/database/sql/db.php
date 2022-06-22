@@ -4,5 +4,5 @@ echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-a
 $server = "localhost";
 $username = "root";
 $password = "";
-$dbname = "test";
+$dbname = "digidave_hkau48w1";
 $conn = new PDO("mysql:host=$server;dbname=$dbname", $username, $password);
