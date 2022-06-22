@@ -28,7 +28,7 @@ for ($i = 0; $i < count($json); $i++) {
 <body>
     <div class="topnav">
   <a class="active" href="#home"><h3>(digidave)</h3></a>
-  <a href="#">login</a>
+  <a href="login.php">login</a>
   <a href="#">Contact</a>
   <a href="#">About</a>
   <a href="#">News</a>
