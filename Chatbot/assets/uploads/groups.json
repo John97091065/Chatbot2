@@ -33,7 +33,8 @@
            "theme_color": "green",
             "display_names_allowed": true,
             "email_only": false,
-            "student_only": true 
+            "student_only": true,
+            "is_public": false
         }
         
     },
@@ -65,13 +66,22 @@
                 "email":"xsporteldaily@gmail.com",
                 "Snumber":97097492,
                 "role":"participant"
+            },
+            {
+                "Fname": "xander",
+                "Lname": "verzijden",
+                "Uname": "xanderverz",
+                "email": "nee",
+                "Snumber": null,
+                "role": "admin"
             }
         ],
         "settings": {
             "theme_color": "#ff0000",
             "display_names_allowed": true,
             "email_only": false,
-            "student_only": true
+            "student_only": true,
+            "is_public": true
         }
         
     }
