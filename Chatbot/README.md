@@ -1,4 +1,4 @@
-# chatbot digidave
+## chatbot digidave
 chatbot voor de studenten van het deltion college zwolle
 
 functions:
