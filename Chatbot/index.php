@@ -13,8 +13,8 @@ for ($i = 0; $i < count($json); $i++) {
     $groups .= "</div>";
 }
 
-$persons = new persons();
-var_dump($persons->getPersonById(0));
+$p = new person;
+var_dump($p->getPersonList());
 
 ?>
 
