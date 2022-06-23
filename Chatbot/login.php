@@ -1,7 +1,33 @@
 <?php
 
 session_start();
-require('assets/database/sql/db.php');
+require_once 'assets/database/sql/db.php';
+require_once 'assets/classes/classes.php';
+
+if ($_POST) {
+    $p = new persons;
+    if (str_contains($_POST["userDetails"], "@")) {
+        $p->getPersonByEmail($_POST["userDetails"]);
+        if (password_verify($_POST["password"], $p->password)) {
+            echo "yess";
+        }
+        else {
+            echo "wrong password";
+        }
+    }
+    else if (is_numeric($_POST["userDetails"])) {
+        
+    }
+    else {
+        $person = $p->getPersonByUsername($_POST["userDetails"]);
+        if (password_verify($_POST["password"], $person["password"])) {
+            echo "yess u";
+        }
+        else {
+            echo "wrong pass";
+        }
+    }
+}
 
 ?>
 
@@ -23,9 +49,9 @@ require('assets/database/sql/db.php');
     
         
 
-        <form>
+        <form method="POST">
             <h3>Login</h3>
-            <input type="text" name="username" placeholder="username/email/studentNumber">
+            <input type="text" name="userDetails" placeholder="username/email/studentNumber">
             <br /><br />
             <input type="password" name="password" placeholder="Password">
             <br> <br>

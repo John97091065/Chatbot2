@@ -32,20 +32,27 @@ class group extends groups {
 class persons {
     function getPersonList() {
         $db = new dataBase();
-        $result = $db->selectAll("*", "users");
+        $result = $db->select("*", "users");
 
         return $result;
     }
 
     function getPersonById($id) {
         $db = new dataBase;
-        $result = $db->selectAll("*", "users", "id", $id);
+        $result = $db->select("*", "users", "id", $id);
         return $result;
     }
 
     function getPersonByUsername($name) {
         $db = new dataBase;
-        $result = $db->selectAll("*", "users", "Uname", $name);
+        $result = $db->select("*", "users", "Uname", $name);
+
+        return $result;
+    }
+
+    function getPersonByEmail($email) {
+        $db = new dataBase;
+        $result = $db->select("*", "users", "email", $email);
 
         return $result;
     }
@@ -70,7 +77,7 @@ class person extends persons {
         $id = date('md').rand(1000,9999);
     
         $db = new dataBase();
-        $result = $db->selectAll("*", "users", "id", $id, true);
+        $result = $db->select("*", "users", "id", $id, true);
 
         return $id;
     }
@@ -88,7 +95,7 @@ class dataBase {
         return $con;
     }
 
-    function selectAll($select = "*", $table, $where = null, $value = null, $getBool = false) {
+    function select($select = "*", $table, $where = null, $value = null, $getBool = false) {
         $db = new dataBase();
         $con = $db->getDDB();
         $sql = "SELECT $select FROM `$table`";
@@ -110,6 +117,6 @@ class dataBase {
             }
         }
 
-        return $result;
+        return $result[0];
     }
 }

@@ -12,10 +12,6 @@ for ($i = 0; $i < count($json); $i++) {
     $groups .= "<div><h4>" . count($json[$i]->persons) . "/" . $json[$i]->maxAmount . "</h4></div>";
     $groups .= "</div>";
 }
-
-$p = new person;
-var_dump($p->getPersonList());
-
 ?>
 
 <!DOCTYPE html>
