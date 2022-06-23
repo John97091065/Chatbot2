@@ -12,6 +12,9 @@ for ($i = 0; $i < count($json); $i++) {
     $groups .= "<div><h4>" . count($json[$i]->persons) . "/" . $json[$i]->maxAmount . "</h4></div>";
     $groups .= "</div>";
 }
+
+$g = new group;
+$g->createGroup("SD1C", 10, 6235793, ["frits"]);
 ?>
 
 <!DOCTYPE html>

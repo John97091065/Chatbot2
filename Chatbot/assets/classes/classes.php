@@ -22,10 +22,50 @@ class groups {
 }
 
 class group extends groups {
-    function createGroup(string $groupName, int $maxMembers, array $persons, array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
-        $personArr = "";
-        $settingsArr = "";
-        $jsonArr = ["groupName"=>$groupName, "maxAmount"=>$maxMembers, "persons"=>$personArr, "settings"=>$settingsArr];
+
+    function addPersonToGroup($person, $group, $author) {
+
+    }
+
+    function createGroup(string $groupName, int $maxMembers, int $author, array $persons = [], array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
+        $personsArr = array();
+        $p = new persons;
+        $temp = $p->getPersonById($author);
+        unset($temp["password"]);
+        unset($temp["groups"]);
+        unset($temp["created_at"]);
+        $temp["role"] = "admin";
+        array_push($personsArr, $temp);
+
+        foreach ($persons as $Uname) {
+            $p = new persons;
+            $temp = $p->getPersonByUsername($Uname);
+            unset($temp["password"]);
+            unset($temp["groups"]);
+            $temp["role"] = "participant";
+            array_push($personsArr, $temp);
+        } 
+
+        $jsonArr = ["groupName"=>$groupName, "maxAmount"=>$maxMembers, "persons"=>$personsArr, "settings"=>$settings];
+
+        $inp = file_get_contents('../chatbot/assets/uploads/groups_data.json');
+        $tempArray = json_decode($inp, true);
+        
+        if (isset($tempArray)) {
+            array_push($tempArray, $jsonArr);    
+        }
+        else {
+            $tempArray = [];
+            array_push($tempArray, $jsonArr);    
+        }
+
+        var_dump($tempArray);
+        
+        $jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
+        file_put_contents('../chatbot/assets/uploads/groups_data.json', $jsonData);
+
+        //$json = file_get_contents("../chatbot/assets/uploads/groups_data.json") . json_encode($jsonArr, JSON_PRETTY_PRINT);
+        //file_put_contents("../chatbot/assets/uploads/groups_data.json", "," . $json);
     }
 }
 
@@ -74,7 +114,7 @@ class person extends persons {
     }
 
     function generateId() {
-        $id = date('md').rand(1000,9999);
+        $id = date('y').rand(1000,9999);
     
         $db = new dataBase();
         $result = $db->select("*", "users", "id", $id, true);
