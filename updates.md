@@ -7,3 +7,6 @@
 - groepen kunnen openbaar zijn
 - je kan nu groepen openen
 - je kan nu automatisch groepen aanmaken (beta)
+
+### 23 juni
+- loginsysteem werkt

@@ -22,30 +22,89 @@ class groups {
 }
 
 class group extends groups {
-    function createGroup(string $groupName, int $maxMembers, array $persons, array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
-        $personArr = "";
-        $settingsArr = "";
-        $jsonArr = ["groupName"=>$groupName, "maxAmount"=>$maxMembers, "persons"=>$personArr, "settings"=>$settingsArr];
+
+    function addPersonToGroup($person, $group, $author) {
+
+    }
+
+    function createGroup(string $groupName, int $maxMembers, int $author, array $persons = [], array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
+        $personsArr = array();
+        $p = new persons;
+        $temp = $p->getPersonById($author);
+
+        if ($temp == null) return false;
+
+        unset($temp["password"]);
+        unset($temp["groups"]);
+        unset($temp["created_at"]);
+
+        $temp["role"] = "admin";
+        array_push($personsArr, $temp);
+
+        $p = new person;
+        $GID = $p->generateId("groups");
+
+        foreach ($persons as $Uname) {
+            $p = new persons;
+            $temp = $p->getPersonByUsername($Uname);
+
+            if ($temp != null) {
+                unset($temp["password"]);
+                unset($temp["groups"]);
+                unset($temp["created_at"]);
+
+                $temp["role"] = "participant";
+                array_push($personsArr, $temp);
+            }
+        } 
+
+        $jsonArr = ["groupName"=>$groupName, "maxAmount"=>$maxMembers, "persons"=>$personsArr, "settings"=>$settings];
+
+        $inp = file_get_contents('../chatbot/assets/uploads/groups_data.json');
+        $tempArray = json_decode($inp, true);
+        
+        if (isset($tempArray)) {
+            array_push($tempArray, $jsonArr);    
+        }
+        else {
+            $tempArray = [];
+            array_push($tempArray, $jsonArr);    
+        }
+
+        var_dump($tempArray);
+        
+        $jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
+        file_put_contents('../chatbot/assets/uploads/groups_data.json', $jsonData);
+
+        $db = new dataBase;
+        $stmt = $db->insert("groups", "GID, groupName", "$GID, $groupName");
     }
 }
 
 class persons {
     function getPersonList() {
         $db = new dataBase();
-        $result = $db->selectAll("*", "users");
+        $result = $db->select("*", "users");
 
         return $result;
     }
 
     function getPersonById($id) {
         $db = new dataBase;
-        $result = $db->selectAll("*", "users", "id", $id);
+        $result = $db->select("*", "users", "id", $id);
         return $result;
     }
 
     function getPersonByUsername($name) {
         $db = new dataBase;
-        $result = $db->selectAll("*", "users", "Uname", $name);
+        $result = $db->select("*", "users", "Uname", $name);
+
+        return $result;
+    }
+
+    function getPersonByEmail($email) {
+        $db = new dataBase;
+        $result = $db->select("*", "users", "email", $email);
 
         return $result;
     }
@@ -57,7 +116,7 @@ class person extends persons {
         $pass = password_hash($password, PASSWORD_DEFAULT);
 
         $p = new person;
-        $id = $p->generateId();
+        $id = $p->generateId("users");
 
         $db = new dataBase();
         $con = $db->getDDB();
@@ -66,11 +125,16 @@ class person extends persons {
         $stmt->execute();
     }
 
-    function generateId() {
-        $id = date('md').rand(1000,9999);
+    function generateId($table) {
+        $id = date('y').rand(1000,9999);
     
         $db = new dataBase();
-        $result = $db->selectAll("*", "users", "id", $id, true);
+        $result = $db->select("*", $table, "id", $id, true);
+        if ($result) {
+            $p = new person;
+            $r = $p->generateId($table);
+            return $r;
+        }
 
         return $id;
     }
@@ -88,7 +152,7 @@ class dataBase {
         return $con;
     }
 
-    function selectAll($select = "*", $table, $where = null, $value = null, $getBool = false) {
+    function select($select = "*", $table, $where = null, $value = null, $getBool = false) {
         $db = new dataBase();
         $con = $db->getDDB();
         $sql = "SELECT $select FROM `$table`";
@@ -101,15 +165,24 @@ class dataBase {
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($getBool) {
-            if ($result) {
+        if ($result) {
+            if ($getBool) {
                 return true;
             }
-            else {
+        }
+        else {
+            if ($getBool) {
                 return false;
             }
+            return null;
         }
 
-        return $result;
+        return $result[0];
+    }
+
+    function insert($table, $cols, $values) {
+        $db = new dataBase();
+        $con = $db->getDDB();
+        $sql = "INSERT INTO $table ($cols) VALUES $values";
     }
 }

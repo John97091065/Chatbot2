@@ -1,6 +1,6 @@
 <?php
-require_once "assets/database/sql/db.php";
-require_once "assets/classes/classes.php";
+require_once "../assets/database/sql/db.php";
+require_once "../assets/classes/classes.php";
 
 $grouplist = new groups();
 $grouplist = $grouplist->getGroupList();
