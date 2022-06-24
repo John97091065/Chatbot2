@@ -2,10 +2,8 @@
 require_once "../assets/database/sql/db.php";
 require_once "../assets/classes/classes.php";
 
-$grouplist = new groups();
-$grouplist = $grouplist->getGroupList();
-
-$group = $grouplist[$_GET["g"]];
+$groups = new groups();
+$group = $groups->getGroupByGid($_GET["g"]);
 
 
 ?>
@@ -16,8 +14,8 @@ $group = $grouplist[$_GET["g"]];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style/group.css">
-    <link rel="stylesheet" href="assets/style/general.css">
+    <link rel="stylesheet" href="../assets/style/group.css">
+    <link rel="stylesheet" href="../assets/style/general.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="assets/js/groups.js"></script>
     <title><?= strval($group->groupName) ?></title>
