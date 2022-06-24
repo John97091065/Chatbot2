@@ -50,8 +50,7 @@ body{
 form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-evenly;
 
     height: 100%;
     width: 400px;
@@ -67,13 +66,21 @@ form {
 form header {
     text-align: center;
     position: relative;
-    top: -40px;
+    gap: 75px;
 }
 
 form input {
     padding: 16px;
     border: 2px ridge black;
     border-radius: 10px;
+}
+
+form .row:not(header) {
+    gap: 10px;
+}
+
+form input.small {
+    width: 175px;
 }
 
 form input[type="submit"] {
@@ -84,8 +91,8 @@ form input[type="submit"]:hover {
     background: rgb(2, 212, 249);
 }
 
-form .row a {
+form a {
+    font-size: 20px;
     text-decoration: none;
     color: white;
-    font-size: 20px;
 }

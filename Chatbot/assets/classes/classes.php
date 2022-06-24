@@ -31,19 +31,31 @@ class group extends groups {
         $personsArr = array();
         $p = new persons;
         $temp = $p->getPersonById($author);
+
+        if ($temp == null) return false;
+
         unset($temp["password"]);
         unset($temp["groups"]);
         unset($temp["created_at"]);
+
         $temp["role"] = "admin";
         array_push($personsArr, $temp);
+
+        $p = new person;
+        $GID = $p->generateId("groups");
 
         foreach ($persons as $Uname) {
             $p = new persons;
             $temp = $p->getPersonByUsername($Uname);
-            unset($temp["password"]);
-            unset($temp["groups"]);
-            $temp["role"] = "participant";
-            array_push($personsArr, $temp);
+
+            if ($temp != null) {
+                unset($temp["password"]);
+                unset($temp["groups"]);
+                unset($temp["created_at"]);
+
+                $temp["role"] = "participant";
+                array_push($personsArr, $temp);
+            }
         } 
 
         $jsonArr = ["groupName"=>$groupName, "maxAmount"=>$maxMembers, "persons"=>$personsArr, "settings"=>$settings];
@@ -64,8 +76,8 @@ class group extends groups {
         $jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
         file_put_contents('../chatbot/assets/uploads/groups_data.json', $jsonData);
 
-        //$json = file_get_contents("../chatbot/assets/uploads/groups_data.json") . json_encode($jsonArr, JSON_PRETTY_PRINT);
-        //file_put_contents("../chatbot/assets/uploads/groups_data.json", "," . $json);
+        $db = new dataBase;
+        $stmt = $db->insert("groups", "GID, groupName", "$GID, $groupName");
     }
 }
 
@@ -104,7 +116,7 @@ class person extends persons {
         $pass = password_hash($password, PASSWORD_DEFAULT);
 
         $p = new person;
-        $id = $p->generateId();
+        $id = $p->generateId("users");
 
         $db = new dataBase();
         $con = $db->getDDB();
@@ -113,11 +125,16 @@ class person extends persons {
         $stmt->execute();
     }
 
-    function generateId() {
+    function generateId($table) {
         $id = date('y').rand(1000,9999);
     
         $db = new dataBase();
-        $result = $db->select("*", "users", "id", $id, true);
+        $result = $db->select("*", $table, "id", $id, true);
+        if ($result) {
+            $p = new person;
+            $r = $p->generateId($table);
+            return $r;
+        }
 
         return $id;
     }
@@ -148,15 +165,24 @@ class dataBase {
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($getBool) {
-            if ($result) {
+        if ($result) {
+            if ($getBool) {
                 return true;
             }
-            else {
+        }
+        else {
+            if ($getBool) {
                 return false;
             }
+            return null;
         }
 
         return $result[0];
+    }
+
+    function insert($table, $cols, $values) {
+        $db = new dataBase();
+        $con = $db->getDDB();
+        $sql = "INSERT INTO $table ($cols) VALUES $values";
     }
 }

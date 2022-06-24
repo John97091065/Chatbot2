@@ -13,8 +13,7 @@ for ($i = 0; $i < count($json); $i++) {
     $groups .= "</div>";
 }
 
-$g = new group;
-$g->createGroup("SD1C", 10, 6235793, ["frits"]);
+
 ?>
 
 <!DOCTYPE html>

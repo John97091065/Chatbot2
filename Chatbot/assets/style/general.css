@@ -2,3 +2,25 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.acenter {
+    align-items: center;
+}
+
+.jcenter {
+    justify-content: center;
+}
+
+.spaceB {
+    justify-content: space-between;
+}
