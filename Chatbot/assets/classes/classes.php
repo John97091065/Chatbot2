@@ -11,7 +11,7 @@ class groups {
     function getGroupByGid(int $GID) {
         $g = new group;
         $list = $g->getGroupList();
-        $list[$GID];
+        return $list[$GID];
     }
 
     function getGroupsByName(string $name) {
