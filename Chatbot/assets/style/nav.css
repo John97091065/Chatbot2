@@ -1,6 +1,6 @@
 header {
     height: auto;
-    background-color: #333;
+    background-color: rgb(34, 34, 34);
     overflow: hidden;
     display: flex;
     justify-content: space-between;

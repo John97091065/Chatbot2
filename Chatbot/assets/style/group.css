@@ -9,21 +9,23 @@ body {
 
 .persons {
     width: 300px;
-    background: red;
+    background: rgb(34, 34, 34);
+    
 }
 
 .persons header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: green;
+    background: rgb(34, 34, 34);
     height: 50px;
+    color: white;
 }
 
 .persons .pHeader {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background: yellowgreen;
+    background: rgb(255, 255, 255);
 }
 
 .persons .pHeader h4:last-child {
@@ -37,8 +39,9 @@ body {
 .persons .person {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background: yellowgreen;
+    background: rgb(34, 34, 34);
     border-top: 1px solid black;
+    color: white;
 }
 
 .persons .person .Psettings {
@@ -51,5 +54,5 @@ body {
 
 .chat {
     flex: 1;
-    background: blue;
+    background: rgb(255, 255, 255);
 }
