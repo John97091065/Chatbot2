@@ -39,20 +39,12 @@ body {
 .persons .person {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    padding: 6px;
     background: rgb(34, 34, 34);
     border-top: 1px solid black;
     color: white;
 }
 
-.persons .person .Psettings {
-    justify-self: center;
-}
-
-.persons .person p {
-    padding: 4px 8px;
-}
-
-.chat {
-    flex: 1;
-    background: rgb(255, 255, 255);
+.persons .person:hover {
+    background: rgb(60, 60, 60);
 }

@@ -26,7 +26,7 @@ $group = $groups->getGroupByGid($_GET["g"]);
             <header>
                 <p class="fa-solid fa-gear"></p>
                 <p>personen</p>
-                <p>X</p>
+                <p><?= count($group->persons) . "/" . $group->maxAmount ?></p>
             </header>
             <div class="wrapper">
                 <div class="pHeader">
@@ -35,10 +35,10 @@ $group = $groups->getGroupByGid($_GET["g"]);
                     <h4>...</h4>
                 </div>
                 <?php for ($i = 0; count($group->persons) > $i; $i++) { ?>
-                <div class="person">
+                <div class="person" onclick="Stoggle('set'<?= $i ?>)">
                     <p class="userName"><?= $group->persons[$i]->Uname ?></p>
                     <p class="role"><?= $group->persons[$i]->role ?></p>
-                    <p class="Psettings">...</p>
+                    <p class="Psettingsbtn">...</p>
                 </div>
                 <?php } ?>
             </div>

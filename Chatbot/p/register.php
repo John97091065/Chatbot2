@@ -1,3 +1,25 @@
+<?php
+require_once "../assets/classes/classes.php";
+require_once "../assets/database/sql/db.php";
+
+$error = "";
+if ($_POST) {
+    $p = new persons;
+    if ($p->getPersonByUsername($_POST["Uname"])) {
+        $error = "username already exists";
+    }
+    else if ($_POST["password"] != $_POST["Cpassword"]) {
+        $error = "passwords do not match";
+    }
+    else if ($p->getPersonByEmail($_POST["email"] && isset($_POST["email"]))) {
+        $error = "email already exists";
+    }
+    else if (false) {
+        return;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,18 +44,21 @@
 
                 <h1>Register</h1>
             </header>
-            
+
             <div class="row">
                 <input type="text" class="small" name="Fname" autocomplete="given-name" placeholder="first name*">
                 <input type="text" class="small" name="Lname" autocomplete="family-name" placeholder="last name*">
             </div>
             
             <input type="text" name="Uname" autocomplete="nickname" placeholder="username">
-            <input type="password" name="password" autocomplete="new-password" placeholder="password*">
+            <div class="row">
+                <input type="password" class="small" name="password" autocomplete="new-password" placeholder="password*">
+                <input type="password" class="small" name="Cpassword" autocomplete="new-password" placeholder="confirm password*">
+            </div>
             <input type="email" name="email" autocomplete="email" placeholder="email">
             <input type="number" name="Snumber" placeholder="student number">
             <input type="submit" value="sign up">
-            
+            <div class="error"><?= $error ?></div>
         </form>
         
     </div>

@@ -10,3 +10,6 @@
 
 ### 23 juni
 - loginsysteem werkt
+- registreer systeem werkt
+
+### 25 juni

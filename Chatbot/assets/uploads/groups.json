@@ -30,7 +30,7 @@
             }
         ],
         "settings": {
-            "theme_color": "beige",
+            "theme_color": "cyan",
             "display_names_allowed": true,
             "access_without_email": false,
             "student_only": true,
@@ -77,7 +77,7 @@
             }
         ],
         "settings": {
-            "theme_color": "pink",
+            "theme_color": "purple",
             "display_names_allowed": true,
             "access_without_email": true,
             "student_only": true,

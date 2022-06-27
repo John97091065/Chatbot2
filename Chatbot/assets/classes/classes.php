@@ -44,7 +44,7 @@ class group extends groups {
         array_push($personsArr, $temp);
 
         $p = new person;
-        $GID = $p->generateId("groups");
+        $GID = $p->generatePersonId("groups");
 
         foreach ($persons as $Uname) {
             $p = new persons;
@@ -118,7 +118,7 @@ class person extends persons {
         $pass = password_hash($password, PASSWORD_DEFAULT);
 
         $p = new person;
-        $id = $p->generateId("users");
+        $id = $p->generatePersonId("users");
 
         $db = new dataBase();
         $con = $db->getDDB();
@@ -127,14 +127,14 @@ class person extends persons {
         $stmt->execute();
     }
 
-    function generateId($table) {
+    function generatePersonId($table) {
         $id = date('y').rand(1000,9999);
     
         $db = new dataBase();
         $result = $db->select("*", $table, "id", $id, true);
         if ($result) {
             $p = new person;
-            $r = $p->generateId($table);
+            $r = $p->generatePersonId($table);
             return $r;
         }
 

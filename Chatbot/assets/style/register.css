@@ -70,7 +70,7 @@ form header {
 }
 
 form input {
-    padding: 16px;
+    padding: 12px;
     border: 2px ridge black;
     border-radius: 10px;
 }
@@ -95,4 +95,9 @@ form a {
     font-size: 20px;
     text-decoration: none;
     color: white;
+}
+
+form .error {
+    height: 40px;
+    color: red;
 }

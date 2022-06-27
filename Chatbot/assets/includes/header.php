@@ -1,5 +1,6 @@
 <header>
     <div class="home"><h3><a href="./">DigiDave</a></h3></div>
+    <input type="search" name="group" placeholder="search group" style="width: 300px; height: 30px; border-radius: 20px;">
     <nav>
         <ul>
             <li><a href="#">News</a></li>
