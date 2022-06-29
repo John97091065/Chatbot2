@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 21 jun 2022 om 10:49
+-- Gegenereerd op: 29 jun 2022 om 23:35
 -- Serverversie: 10.4.22-MariaDB
 -- PHP-versie: 8.1.2
 
@@ -20,8 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `digidave_hkau48w1`
 --
-CREATE DATABASE IF NOT EXISTS `digidave_hkau48w1` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `digidave_hkau48w1`;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `groups`
+--
+
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL,
+  `groupName` varchar(255) DEFAULT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -31,26 +41,40 @@ USE `digidave_hkau48w1`;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `Uname` varchar(255) NOT NULL,
+  `Fname` varchar(255) NOT NULL,
   `Lname` varchar(255) NOT NULL,
-  `Dname` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `Uname` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `Snumber` int(255) DEFAULT NULL,
-  `groups` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`groups`))
+  `groups` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`groups`)),
+  `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `users`
+--
+
+INSERT INTO `users` (`id`, `Fname`, `Lname`, `Uname`, `password`, `email`, `Snumber`, `groups`, `created_at`) VALUES
+(6232984, 'xandor', 'sportel', 'frits', '$2y$10$hJKRqWKwnc/HKDwLUc//JeebWhrBMKWlE325XPbTxe5qzmav0L//q', NULL, NULL, '[]', '2022-06-23'),
+(6235793, 'brian', 'post', 'brianp17', '$2y$10$3U7iT8GW206VuFZCjBitI.qJqExiHEfrI/W2OH/i0qCta8jtjp0sq', NULL, NULL, '[]', '2022-06-23');
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
 
 --
+-- Indexen voor tabel `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexen voor tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `Dname` (`Dname`),
-  ADD UNIQUE KEY `Snumber` (`Snumber`);
+  ADD UNIQUE KEY `Dname` (`Uname`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
