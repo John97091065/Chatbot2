@@ -29,7 +29,7 @@ class group extends groups {
 
     }
 
-    function createGroup(string $groupName, int $maxMembers, int $author, array $persons = [], array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
+    function createGroup(string $groupName, int $maxMembers, int $author, string $file = '../chatbot/assets/uploads/groups_data.json', array $persons = [], array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
         $personsArr = array();
         $p = new persons;
         $temp = $p->getPersonById($author);
@@ -62,7 +62,7 @@ class group extends groups {
 
         $jsonArr = ["groupName"=>$groupName, "maxAmount"=>$maxMembers, "persons"=>$personsArr, "settings"=>$settings];
 
-        $inp = file_get_contents('../chatbot/assets/uploads/groups_data.json');
+        $inp = file_get_contents($file);
         $tempArray = json_decode($inp, true);
         
         if (isset($tempArray)) {
@@ -76,7 +76,7 @@ class group extends groups {
         var_dump($tempArray);
         
         $jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
-        file_put_contents('../chatbot/assets/uploads/groups_data.json', $jsonData);
+        file_put_contents($file, $jsonData);
 
         $db = new dataBase;
         $stmt = $db->insert("groups", "GID, groupName", "$GID, $groupName");

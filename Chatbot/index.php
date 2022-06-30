@@ -33,6 +33,11 @@ for ($i = 0; $i < count($json); $i++) {
     <?php include "assets/includes/header.php" ?>
     <div class="container">
         <?= $groups ?>
+
+        <div class="group" onclick="window.location = 'g/create.php'">
+        <h1>+</h1>
+        </div>
     </div>
+    
 </body>
 </html>
