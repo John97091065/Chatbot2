@@ -1,10 +1,11 @@
 <?php
 require_once "../assets/database/sql/db.php";
-require_once "../assets/classes/classes.php";
+require_once "../assets/classes/groups.php";
+
+$jsonfile = "../assets/uploads/groups.json";
 
 $groups = new groups();
-$group = $groups->getGroupByIndex($_GET["g"]);
-
+$group = $groups->getGroupByGid(intval($_GET["g"]), $jsonfile);
 
 ?>
 

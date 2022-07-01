@@ -48,3 +48,7 @@ body {
 .persons .person:hover {
     background: rgb(60, 60, 60);
 }
+
+.persons .person .Psettingsbtn {
+    justify-self: center;
+}

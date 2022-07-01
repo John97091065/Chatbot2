@@ -1,15 +1,25 @@
 <?php
 
 class groups {
-    function getGroupList() {
-        $json = json_decode(file_get_contents("../assets/uploads/groups.json"));
+    function getGroupList($file) {
+        $json = json_decode(file_get_contents($file));
         return $json;
     }
 
-    function getGroupByGid(int $GID) {
-        $g = new group;
-        $list = $g->getGroupList();
-        return $list[$GID];
+    function getGroupByIndex(int $index, $file) {
+        $g = new groups;
+        $list = $g->getGroupList($file);
+        return $list[$index];
+    }
+
+    function getGroupByGid($GID, $file) {
+        $g = new groups;
+        $list = $g->getGroupList($file);
+        for ($i = 0; $i < count($list); $i++) {
+            if ($list[$i]->GID == $GID) {
+                return $list[$i];
+            }
+        }
     }
 
     function getGroupsByName(string $name) {

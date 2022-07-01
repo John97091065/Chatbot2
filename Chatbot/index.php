@@ -1,9 +1,11 @@
 <?php 
 
 require_once "./assets/database/sql/db.php";
-require_once "./assets/classes/classes.php";
+require_once "./assets/classes/groups.php";
 
+$file = "assets/uploads/groups.json";
 $json = json_decode(file_get_contents("assets/uploads/groups.json"));
+
 
 if (!isset($json)) {
     $json = array();
@@ -12,7 +14,7 @@ if (!isset($json)) {
 $groups = "";
 
 for ($i = 0; $i < count($json); $i++) {
-    $groups .= "<div class='group' onclick='Gopen( " . $i . ")' style='background: radial-gradient(white 1% ," . $json[$i]->settings->theme_color . ")'>";
+    $groups .= "<div class='group' onclick='Gopen( " . $json[$i]->GID . ")' style='background: radial-gradient(white 1% ," . $json[$i]->settings->theme_color . ")'>";
     $groups .= "<h2>" . $json[$i]->groupName . "</h2>";
     $groups .= "<div><h4>" . count($json[$i]->persons) . "/" . $json[$i]->maxAmount . "</h4></div>";
     $groups .= "</div>";
