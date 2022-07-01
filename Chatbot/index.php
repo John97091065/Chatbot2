@@ -4,6 +4,9 @@ require_once "./assets/database/sql/db.php";
 require_once "./assets/classes/classes.php";
 
 $json = json_decode(file_get_contents("assets/uploads/groups_data.json"));
+if (!isset($json)) {
+    $json = array();
+}
 
 $groups = "";
 
