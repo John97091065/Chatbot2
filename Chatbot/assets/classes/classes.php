@@ -8,9 +8,10 @@ class groups {
         return $json;
     }
 
-    function getGroupByGid(int $GID) {
+    function getGroupByIndex(int $GID) {
         $g = new group;
         $list = $g->getGroupList();
+        
         return $list[$GID];
     }
 

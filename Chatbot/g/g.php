@@ -3,7 +3,7 @@ require_once "../assets/database/sql/db.php";
 require_once "../assets/classes/classes.php";
 
 $groups = new groups();
-$group = $groups->getGroupByGid($_GET["g"]);
+$group = $groups->getGroupByIndex($_GET["g"]);
 
 
 ?>

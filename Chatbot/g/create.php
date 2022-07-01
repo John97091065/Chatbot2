@@ -6,7 +6,7 @@ require_once "../assets/classes/classes.php";
 if ($_POST) {
     $g = new group;
     $g->createGroup(
-        "../assets/uploads/groups_data.json",
+        "../assets/uploads/groups.json",
         $_POST["groupName"], 
         $_POST["maxAmount"], 
         6235793, 
