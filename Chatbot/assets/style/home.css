@@ -8,6 +8,7 @@ body {
   height: fit-content;
   grid-template-columns: repeat(4, 1fr);
   justify-content: space-around;
+  padding: 8px;
   margin: 8px;
   gap: 8px;
 }
