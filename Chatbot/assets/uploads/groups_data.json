@@ -1,0 +1,40 @@
+[
+    {
+        "GID": 149859,
+        "groupName": "Groo-en-tee-soo-ep",
+        "maxAmount": 5,
+        "persons": [
+            {
+                "id": 6235793,
+                "Uname": "brianp17",
+                "role": "admin"
+            }
+        ],
+        "settings": {
+            "theme_color": "#0040ff",
+            "display_names_allowed": true,
+            "acces_without_email": true,
+            "student_only": false,
+            "is_public": true
+        }
+    },
+    {
+        "GID": 477882,
+        "groupName": "test",
+        "maxAmount": 5,
+        "persons": [
+            {
+                "id": 6235793,
+                "Uname": "brianp17",
+                "role": "admin"
+            }
+        ],
+        "settings": {
+            "theme_color": "#ffc800",
+            "display_names_allowed": true,
+            "acces_without_email": true,
+            "student_only": false,
+            "is_public": true
+        }
+    }
+]

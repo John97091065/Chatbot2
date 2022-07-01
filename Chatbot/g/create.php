@@ -18,6 +18,7 @@ if ($_POST) {
             "student_only"=>isset($_POST["student_only"]), 
             "is_public"=>isset($_POST["is_public"])
         ]);
+        header("location: ../");
 }
 ?>
 
