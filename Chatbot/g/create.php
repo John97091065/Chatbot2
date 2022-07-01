@@ -1,5 +1,24 @@
 <?php
+require_once "../assets/database/sql/db.php";
+require_once "../assets/classes/classes.php";
 
+
+if ($_POST) {
+    $g = new group;
+    $g->createGroup(
+        "../assets/uploads/groups_data.json",
+        $_POST["groupName"], 
+        $_POST["maxAmount"], 
+        6235793, 
+        [$_POST["persons"]], 
+        [
+            "theme_color"=>$_POST["theme_color"], 
+            "display_names_allowed"=>$_POST["display_names_allowed"], 
+            "acces_without_email"=>$_POST["acces_without_email"], 
+            "student_only"=>$_POST["student_only"], 
+            "is_public"=>$_POST["is_public"]
+        ]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +32,12 @@
 <body>
     <div class="container">
         <form method="post">
-            <input type="text" name="groupName">
-            <input type="number" name="maxAmount" min="5" max="30">
+            <input type="text" name="groupName" placeholder="group name">
+            <input type="number" name="maxAmount" min="5" max="30" placeholder="max">
+            <br>
+            <h2>persons</h2>
+            <p>seperate with a comma (,)</p>
+            <input type="text" name="persons" placeholder="username, username">
             <br>
             <h2>settings</h2>
             <label for="theme_color">theme color: </label>
@@ -31,6 +54,7 @@
             <br>
             <label for="is_public">invite only: </label>
             <input type="checkbox" name="is_public" checked>
+            <input type="submit" value="create">
         </form>
     </div>
 </body>
