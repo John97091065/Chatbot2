@@ -13,10 +13,10 @@ if ($_POST) {
         [$_POST["persons"]], 
         [
             "theme_color"=>$_POST["theme_color"], 
-            "display_names_allowed"=>$_POST["display_names_allowed"], 
-            "acces_without_email"=>$_POST["acces_without_email"], 
-            "student_only"=>$_POST["student_only"], 
-            "is_public"=>$_POST["is_public"]
+            "display_names_allowed"=>isset($_POST["display_names_allowed"]), 
+            "acces_without_email"=>isset($_POST["acces_without_email"]), 
+            "student_only"=>isset($_POST["student_only"]), 
+            "is_public"=>isset($_POST["is_public"])
         ]);
 }
 ?>
