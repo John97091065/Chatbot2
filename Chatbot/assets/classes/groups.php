@@ -32,21 +32,21 @@ class groups {
 
 class group extends groups {
 
-    function getAccesibleGroups(array $person) {
-        $p = new persons;
-        $per = $p->getPersonById($person["id"]);
+    function getAccesibleGroups(array $user) {
+        $u = new users;
+        $user = $u->getUserById($user["id"]);
 
-        $per["groups"];
+        $user["groups"];
     }
 
-    function addPersonToGroup($person, $group, $author) {
+    function addPersonToGroup($user, $group, $author) {
 
     }
 
-    function createGroup(string $file, string $groupName, int $maxMembers, int $author, array $persons = [], array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
-        $personsArr = array();
-        $p = new persons;
-        $temp = $p->getPersonById($author);
+    function createGroup(string $file, string $groupName, int $maxMembers, int $author, array $users = [], array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
+        $usersArr = array();
+        $u = new persons;
+        $temp = $u->getPersonById($author);
 
         if ($temp == null) return false;
 
@@ -61,11 +61,11 @@ class group extends groups {
         $temp["role"] = "admin";
         array_push($personsArr, $temp);
 
-        $p = new person;
-        $GID = $p->generatePersonId("groups");
+        $u = new person;
+        $GID = $u->generatePersonId("groups");
 
-        foreach ($persons as $Pdata) {
-            $p = new persons;
+        foreach ($users as $Pdata) {
+            $u = new persons;
             if (is_string($Pdata)) {
                 $temp = $p->getPersonByUsername($Pdata);
             }

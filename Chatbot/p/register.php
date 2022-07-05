@@ -1,5 +1,5 @@
 <?php
-require_once "../assets/classes/classes.php";
+/* require_once "../assets/classes/classes.php"; */
 require_once "../assets/database/sql/db.php";
 
 $error = "";

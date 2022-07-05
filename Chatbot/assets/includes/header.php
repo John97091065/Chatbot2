@@ -6,7 +6,7 @@
             <li><a href="#">news</a></li>
             <li><a href="#">documentatie</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="./p/login.php">Login</a></li>
+            <li><a href="./p/">Login</a></li>
         </ul>
     </nav>
 </header>
