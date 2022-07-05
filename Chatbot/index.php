@@ -1,7 +1,7 @@
 <?php 
 
-require_once "./assets/database/sql/db.php";
-require_once "./assets/classes/groups.php";
+require_once "./assets/classes/req.php";
+
 
 $file = "assets/uploads/groups.json";
 $json = json_decode(file_get_contents("assets/uploads/groups.json"));
@@ -19,6 +19,11 @@ for ($i = 0; $i < count($json); $i++) {
     $groups .= "<div><h4>" . count($json[$i]->persons) . "/" . $json[$i]->maxAmount . "</h4></div>";
     $groups .= "</div>";
 }
+
+$per = ["id"=> 6232984, "Uname"=> "frits"];
+
+$G = new group;
+$G->getAccesibleGroups($per);
 
 ?>
 

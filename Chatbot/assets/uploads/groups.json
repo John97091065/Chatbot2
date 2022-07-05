@@ -22,5 +22,43 @@
             "student_only": true,
             "is_public": true
         }
+    },
+    {
+        "GID": 732826,
+        "groupName": "ereft",
+        "maxAmount": 30,
+        "persons": [
+            {
+                "id": 6235793,
+                "Uname": "brianp17",
+                "role": "admin"
+            }
+        ],
+        "settings": {
+            "theme_color": "#ffe0e0",
+            "display_names_allowed": true,
+            "acces_without_email": true,
+            "student_only": false,
+            "is_public": true
+        }
+    },
+    {
+        "GID": 794296,
+        "groupName": "IC1D",
+        "maxAmount": 17,
+        "persons": [
+            {
+                "id": 6235793,
+                "Uname": "brianp17",
+                "role": "admin"
+            }
+        ],
+        "settings": {
+            "theme_color": "#ff0000",
+            "display_names_allowed": true,
+            "acces_without_email": true,
+            "student_only": false,
+            "is_public": true
+        }
     }
 ]

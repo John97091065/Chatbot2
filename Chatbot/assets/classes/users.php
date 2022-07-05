@@ -1,7 +1,5 @@
 <?php
 
-    include "database.php";
-
     class persons {
         function getPersonList() {
             $db = new dataBase();

@@ -1,5 +1,8 @@
 <?php
 
+include "users.php";
+include "database.php";
+
 class groups {
     function getGroupList($file) {
         $json = json_decode(file_get_contents($file));
@@ -25,13 +28,16 @@ class groups {
     function getGroupsByName(string $name) {
 
     }
-
-    function importGroup($json) {
-
-    }
 }
 
 class group extends groups {
+
+    function getAccesibleGroups(array $person) {
+        $p = new persons;
+        $per = $p->getPersonById($person["id"]);
+
+        $per["groups"];
+    }
 
     function addPersonToGroup($person, $group, $author) {
 

@@ -8,9 +8,9 @@ must have:
 - huiswerk opvragen/invoegen
 - deadlines invoegen
 - herinnerinen maken
-- groepen maken
+- groepen maken |
 - verjaardag invoegen
-- inloggen
+- inloggen |
 - meme's
 
 want to have:
