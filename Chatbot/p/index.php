@@ -38,7 +38,7 @@ if (isset($_POST["register"])) {
         <form method="post">
             <header class="row">
                 <div class="row">
-                    <a href="login.php">Back</a> 
+                    <a href="./">Back</a> 
                 </div>
                 <h1>Register</h1>
             </header>

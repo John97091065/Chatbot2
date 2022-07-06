@@ -1,7 +1,6 @@
 <?php
 
-include "users.php";
-include "database.php";
+require_once("users.php");
 
 class groups {
     function getGroupList($file) {
@@ -39,14 +38,14 @@ class group extends groups {
         $user["groups"];
     }
 
-    function addPersonToGroup($user, $group, $author) {
+    function addUserToGroup($user, $group, $author) {
 
     }
 
     function createGroup(string $file, string $groupName, int $maxMembers, int $author, array $users = [], array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
         $usersArr = array();
-        $u = new persons;
-        $temp = $u->getPersonById($author);
+        $u = new users;
+        $temp = $u->getUserById($author);
 
         if ($temp == null) return false;
 
@@ -59,18 +58,18 @@ class group extends groups {
         unset($temp["created_at"]);
 
         $temp["role"] = "admin";
-        array_push($personsArr, $temp);
+        array_push($usersArr, $temp);
 
-        $u = new person;
-        $GID = $u->generatePersonId("groups");
+        $u = new user;
+        $GID = $u->generateRandomId("groups");
 
-        foreach ($users as $Pdata) {
-            $u = new persons;
-            if (is_string($Pdata)) {
-                $temp = $p->getPersonByUsername($Pdata);
+        foreach ($users as $Udata) {
+            $u = new users;
+            if (is_string($Udata)) {
+                $temp = $u->getUserByUsername($Udata);
             }
-            else if (is_int($Pdata)) {
-                $temp = $p->getPersonById($Pdata);
+            else if (is_int($Udata)) {
+                $temp = $u->getUserById($Udata);
             }
 
             if ($temp != null) {
@@ -83,13 +82,13 @@ class group extends groups {
                 unset($temp["created_at"]);
 
                 $temp["role"] = "participant";
-                array_push($personsArr, $temp);
+                array_push($usersArr, $temp);
             }
         } 
 
         $GID = rand(100000, 999999);
 
-        $jsonArr = ["GID"=>$GID, "groupName"=>$groupName, "maxAmount"=>$maxMembers, "persons"=>$personsArr, "settings"=>$settings];
+        $jsonArr = ["GID"=>$GID, "groupName"=>$groupName, "maxAmount"=>$maxMembers, "persons"=>$usersArr, "settings"=>$settings];
 
         $inp = file_get_contents($file);
         $tempArray = json_decode($inp, true);

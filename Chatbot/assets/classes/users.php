@@ -1,30 +1,31 @@
 <?php
 
-    include "database.php";
+    require_once("database.php");
 
     class users {
-        function getUsers() {
-            $db = new dataBase;
+        function getUserList() {
+            $db = new dataBase();
             $result = $db->select("*", "users");
 
             return $result;
         }
 
         function getUserById($id) {
-            $db = new dataBase;
+            $db = new dataBase();
             $result = $db->select("*", "users", "id", $id);
+
             return $result;
         }
 
         function getUserByUsername($name) {
-            $db = new dataBase;
+            $db = new dataBase();
             $result = $db->select("*", "users", "Uname", $name);
 
             return $result;
         }
 
         function getUserByEmail($email) {
-            $db = new dataBase;
+            $db = new dataBase();
             $result = $db->select("*", "users", "email", $email);
 
             return $result;
@@ -32,12 +33,11 @@
     }
 
     class user extends users {
-
         function generateRandomId($table) {
 
             $id = date('y').rand(10000,99999);
 
-            $db = new dataBase;
+            $db = new dataBase();
             $result = $db->select("*", $table, "id", $id, true);
             if ($result) {
                 $user = new user;

@@ -10,7 +10,7 @@ if ($_POST) {
         $_POST["groupName"], 
         $_POST["maxAmount"], 
         6235793, 
-        [$_POST["persons"]], 
+        [$_POST["users"]], 
         [
             "theme_color"=>$_POST["theme_color"], 
             "display_names_allowed"=>isset($_POST["display_names_allowed"]), 
@@ -28,7 +28,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create group</title>
+    <title>Create Group</title>
 </head>
 <body>
     <div class="container">
@@ -36,24 +36,24 @@ if ($_POST) {
             <input type="text" name="groupName" placeholder="group name">
             <input type="number" name="maxAmount" min="5" max="30" placeholder="max">
             <br>
-            <h2>persons</h2>
-            <p>seperate with a comma (,)</p>
-            <input type="text" name="persons" placeholder="username, username">
+            <h2>Users</h2>
+            <p>Seperate with a comma (,)</p>
+            <input type="text" name="users" placeholder="username, username">
             <br>
-            <h2>settings</h2>
+            <h2>Settings</h2>
             <label for="theme_color">theme color: </label>
             <input type="color" name="theme_color">
             <br>
-            <label for="display_names_allowed">display usernames: </label>
+            <label for="display_names_allowed">Display usernames: </label>
             <input type="checkbox" name="display_names_allowed" checked>
             <br>
-            <label for="acces_wihout_email">allow acces without email: </label>
+            <label for="acces_wihout_email">Allow acces without email: </label>
             <input type="checkbox" name="acces_without_email" checked>
             <br>
-            <label for="student_only">only allow students: </label>
+            <label for="student_only">Only allow students: </label>
             <input type="checkbox" name="student_only">
             <br>
-            <label for="is_public">invite only: </label>
+            <label for="is_public">Invite only: </label>
             <input type="checkbox" name="is_public" checked>
             <input type="submit" value="create">
         </form>
