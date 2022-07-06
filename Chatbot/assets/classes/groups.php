@@ -1,7 +1,5 @@
 <?php
 
-require_once("users.php");
-
 class groups {
     function getGroupList($file) {
         $json = json_decode(file_get_contents($file));
@@ -43,7 +41,7 @@ class group extends groups {
     }
 
     function createGroup(string $file, string $groupName, int $maxMembers, int $author, array $users = [], array $settings = ["theme_color"=>"grey", "display_names_allowed"=>true, "access_without_email"=>true, "student_only"=>false, "is_public"=>true]) {
-        $usersArr = array();
+        $usersArr = [];
         $u = new users;
         $temp = $u->getUserById($author);
 

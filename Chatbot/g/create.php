@@ -1,7 +1,6 @@
 <?php
-require_once "../assets/database/sql/db.php";
-require_once "../assets/classes/groups.php";
-
+require_once "../assets/classes/req.php";
+load("../");
 
 if ($_POST) {
     $g = new group;

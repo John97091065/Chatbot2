@@ -1,7 +1,5 @@
 <?php
 
-    require_once("database.php");
-
     class users {
         function getUserList() {
             $db = new dataBase();

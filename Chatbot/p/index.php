@@ -1,6 +1,6 @@
 <?php
-
-require_once "../assets/classes/users.php";
+require_once "../assets/classes/req.php";
+load("../");
 
 if (isset($_POST["login"])) {
 
@@ -12,7 +12,7 @@ if (isset($_POST["login"])) {
 if (isset($_POST["register"])) {
 
     $user = new user;
-    $user->createUser($_POST["firstName"], $_POST["lastName"], $_POST["username"], $_POST["password"], $_POST["email"], $_POST["number"]);
+    $user->createUser($_POST["firstName"], $_POST["lastName"], $_POST["username"], $_POST["password"], $_POST["email"], intval($_POST["number"]));
     
 }
 

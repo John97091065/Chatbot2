@@ -1,6 +1,6 @@
 <?php 
-
 require_once "./assets/classes/req.php";
+load("./");
 
 
 $file = "assets/uploads/groups.json";
@@ -21,9 +21,6 @@ for ($i = 0; $i < count($json); $i++) {
 }
 
 $per = ["id"=> 6232984, "Uname"=> "frits"];
-
-$G = new group;
-$G->getAccesibleGroups($per);
 
 ?>
 
